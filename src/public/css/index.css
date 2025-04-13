@@ -1,0 +1,72 @@
+/* 全体レイアウト */
+.search-container {
+    border: 2px solid #99c2ff;
+    padding: 20px;
+    width: 80%;
+    margin: 30px auto;
+    font-family: "Helvetica Neue", sans-serif;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* タイトル */
+.search-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    width: 300px;
+    padding: 8px;
+    font-size: 14px;
+    margin-right: 10px;
+    border: 1px solid #666;
+    border-radius: 4px;
+}
+
+.search-form button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #eee;
+    border: 1px solid #666;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 登録画面へボタン */
+.register-button {
+    float: right;
+    margin-top: -50px;
+    padding: 8px 16px;
+    background-color: #f2f2f2;
+    border: 1px solid #666;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 結果一覧 */
+.result-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.result-item {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.result-item span {
+    display: block;
+    white-space: pre-wrap;
+}
