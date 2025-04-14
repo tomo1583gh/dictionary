@@ -44,7 +44,7 @@
 /* 登録画面へボタン */
 .register-button {
     float: right;
-    margin-top: -50px;
+    margin-top: -80px;
     padding: 8px 16px;
     background-color: #f2f2f2;
     border: 1px solid #666;
@@ -59,14 +59,52 @@
     margin: 0;
 }
 
-.result-item {
+.result-meta {
     display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-    font-size: 16px;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
 }
 
-.result-item span {
-    display: block;
-    white-space: pre-wrap;
+.result-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
+.result-date {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.result-keyword-box {
+    background-color: #dff0ff;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.result-description-box {
+    padding: 10px;
+    background-color: #ffffff;
+    border-left: 4px solid #3399ff;
+}
+
+.result-label {
+    font-weight: bold;
+    color: #444;
+    margin-right: 5px;
+}
+
+.result-description {
+    margin-top: 5px;
+    line-height: 1.7;
+    font-size: 15px;
+    color: #333;
+}
+

@@ -36,14 +36,25 @@
     </a>
     @endauth
 
-
     <ul class="result-list">
-        @foreach($items as $item)
+        @forelse($items as $item)
         <li class="result-item">
-            <span>{{ $item->created_at->format('Y/n/j') }}</span>
-            <span>{{ $item->keyword }}</span>
-            <span>{{ $item->description }}</span>
+            <div class="result-date">登録日：{{ $item->created_at->format('Y/m/d') }}</div>
+
+            <div class="result-keyword-box">
+                <span class="result-label">キーワード：</span>
+                <span class="result-keyword">{{ $item->keyword }}</span>
+            </div>
+
+            <div class="result-description-box">
+                <span class="result-label">説明：</span>
+                <p class="result-description">{{ $item->description }}</p>
+            </div>
         </li>
-        @endforeach
+        @empty
+        <li class="result-item">該当するキーワードはありません。</li>
+        @endforelse
     </ul>
+    
+
 </div>
