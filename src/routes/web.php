@@ -27,3 +27,10 @@ Route::post('/create', [DictionaryController::class, 'store'])->name('dictionary
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//認証済みユーザーのみアクセス可能ルート
+Route::middleware('auth')->group(function () {
+    Route::get('/edit/{id}', [DictionaryController::class, 'edit'])->name('dictionary.edit');
+    Route::post('/update/{id}', [DictionaryController::class, 'update'])->name('dictionary.update');
+    Route::delete('/delete/{id}', [DictionaryController::class, 'destroy'])->name('dictionary.delete');
+});

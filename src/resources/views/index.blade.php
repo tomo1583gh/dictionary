@@ -37,24 +37,24 @@
     @endauth
 
     <ul class="result-list">
-        @forelse($items as $item)
+        @foreach($items as $item)
         <li class="result-item">
             <div class="result-date">登録日：{{ $item->created_at->format('Y/m/d') }}</div>
+            <div class="result-keyword-box"><strong>キーワード：</strong>{{ $item->keyword }}</div>
+            <div class="result-description-box"><strong>説明：</strong>{{ $item->description }}</div>
 
-            <div class="result-keyword-box">
-                <span class="result-label">キーワード：</span>
-                <span class="result-keyword">{{ $item->keyword }}</span>
-            </div>
+            @if(Auth::id() === $item->user_id)
+            <a href="{{ route('dictionary.edit', $item->id) }}">編集</a>
 
-            <div class="result-description-box">
-                <span class="result-label">説明：</span>
-                <p class="result-description">{{ $item->description }}</p>
-            </div>
+            <form action="{{ route('dictionary.delete', $item->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit">削除</button>
+            </form>
+            @endif
         </li>
-        @empty
-        <li class="result-item">該当するキーワードはありません。</li>
-        @endforelse
+        @endforeach
     </ul>
-    
+
 
 </div>

@@ -52,4 +52,42 @@ class DictionaryController extends Controller
 
         return redirect()->route('dictionary.index')->with('message', '登録が完了しました');
     }
+
+    public function edit($id)
+    {
+        $dictionary = Dictionary::findOrFail($id);
+
+        //認可チェック（ログインユーザーの所有データのみ編集可能）
+        if ($dictionary->user_id !==Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
+
+        return view('edit', compact('dictionary'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dictionary = Dictionary::findOrFail($id);
+
+        if ($dictionary->user_id !==Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
+
+        $dictionary->update($request->only(['keyword', 'description']));
+
+        return redirect()->route('dictionary.index')->with('message', '更新が完了しました');
+    }
+
+    public function destroy($id)
+    {
+        $dictionary = Dictionary::findOrFail($id);
+
+        if ($dictionary->user_id !==Auth::id()) {
+            abort(403, 'UNauthorized');
+        }
+
+        $dictionary->delete();
+
+        return redirect()->route('dictionary.index')->with('message', '削除しました');
+    }
 }
