@@ -17,15 +17,15 @@ class DictionaryController extends Controller
         //検索キーワードがあれば絞り込み
         if ($request->filled('keyword')) {
             //空白（全角・半角）で分割
-            $keyword = preg_split('/[\s　]+/', $request->keyword, -1, PREG_SPLIT_NO_EMPTY);
+            $keyword = preg_split('/[\s　]+/', trim($request->keyword), -1, PREG_SPLIT_NO_EMPTY);
 
             //OR検索：全てのキーワードを含むデータだけに絞る
-            foreach ($keyword as $word) {
-                $query->orWhere(function ($q) use ($word) {
-                    $q->where('keyword', 'like', '%' . $word . '%')
+            $query->where(function ($q) use ($keyword) {
+                foreach ($keyword as $word) {
+                    $q->orWhere('keyword', 'like', '%' . $word . '%')
                         ->orWhere('description', 'like', '%' . $word . '%');
-                });
             }
+                });
         }
 
         $items = $query->orderBy('created_at', 'desc')->get();

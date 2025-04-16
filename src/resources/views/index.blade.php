@@ -26,7 +26,7 @@
     <div class="search-title">検索画面</div>
 
     <form class="search-form" action="{{ route('dictionary.index') }}" method="GET">
-        <input type="text" name="keyword" value="{{request('keyword')}}">
+        <input type="text" name="keyword" value="{{ old('keyword',request('keyword')) }}">
         <button type="submit">検索</button>
     </form>
 
@@ -41,11 +41,11 @@
         <li class="result-item">
             <div class="result-date">登録日：{{ $item->created_at->format('Y/m/d') }}</div>
             <div class="result-keyword-box">
-                <span class="result-label"キーワード：</span>
+                <span class="result-label">キーワード：</span>
                 <span class="result-keyword">{{ $item->keyword }}</span>
             </div>
             <div class="result-description-box">
-                <spam class="result-label">説明：</span>
+                <span class="result-label">説明：</span>
                 <p class="result-description">{{ $item->description }}</p>
                 </div>
             @if(Auth::id() === $item->user_id)
