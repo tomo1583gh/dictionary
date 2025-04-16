@@ -40,9 +40,14 @@
         @foreach($items as $item)
         <li class="result-item">
             <div class="result-date">登録日：{{ $item->created_at->format('Y/m/d') }}</div>
-            <div class="result-keyword-box"><strong>キーワード：</strong>{{ $item->keyword }}</div>
-            <div class="result-description-box"><strong>説明：</strong>{{ $item->description }}</div>
-
+            <div class="result-keyword-box">
+                <span class="result-label"キーワード：</span>
+                <span class="result-keyword">{{ $item->keyword }}</span>
+            </div>
+            <div class="result-description-box">
+                <spam class="result-label">説明：</span>
+                <p class="result-description">{{ $item->description }}</p>
+                </div>
             @if(Auth::id() === $item->user_id)
             <a href="{{ route('dictionary.edit', $item->id) }}">編集</a>
 
